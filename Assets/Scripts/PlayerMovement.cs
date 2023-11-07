@@ -9,9 +9,15 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField] private float offset;
-    [SerializeField] private float deadzone;
 
-    
+    [SerializeField] private float speed;
+    [SerializeField] private float smoothTime;
+
+    [SerializeField] private float minDistance;
+
+    Vector2 currentVel;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -47,15 +53,21 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float distance = Vector3.Distance(transform.position, Input.mousePosition);
 
-        if(distance > deadzone)
+        Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float distance = Vector3.Distance(transform.position, targetPos);
+
+        Debug.Log(distance);
+
+        if(distance > minDistance)
         {
-            Vector3 dir = Input.mousePosition - transform.position;
+            targetPos += ((Vector2)transform.position - targetPos).normalized * minDistance;
 
-            rb.velocity =  (dir) * Time.deltaTime;
-
+            transform.position = Vector2.SmoothDamp(transform.position, targetPos, ref currentVel, 0.3f, speed);
         }
+        
+
+        
     }
 
 
