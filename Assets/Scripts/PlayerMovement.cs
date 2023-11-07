@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 currentVel;
 
+    [SerializeField] public float yBoundary;
+    [SerializeField] public float xBoundary;
 
     void Start()
     {
@@ -27,18 +29,18 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        
-            //Mouse Position in the world. It's important to give it some distance from the camera. 
-            //If the screen point is calculated right from the exact position of the camera, then it will
-            //just return the exact same position as the camera, which is no good.
+
+        //Mouse Position in the world. It's important to give it some distance from the camera. 
+        //If the screen point is calculated right from the exact position of the camera, then it will
+        //just return the exact same position as the camera, which is no good.
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
 
-            //Angle between mouse and this object
+        //Angle between mouse and this object
         float angle = AngleBetweenPoints(transform.position, mouseWorldPosition);
 
-            
+
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + offset));
-        
+
 
 
 
@@ -57,18 +59,40 @@ public class PlayerMovement : MonoBehaviour
         Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float distance = Vector3.Distance(transform.position, targetPos);
 
-        Debug.Log(distance);
-
-        if(distance > minDistance)
+        if (distance > minDistance)
         {
             targetPos += ((Vector2)transform.position - targetPos).normalized * minDistance;
 
             transform.position = Vector2.SmoothDamp(transform.position, targetPos, ref currentVel, 0.3f, speed);
-        }
-        
 
-        
+            PlayArea();
+        }
+
+
+
+
+
     }
 
+    void PlayArea()
+    {
+        if (transform.position.x >= xBoundary)
+        {
+            transform.position = new Vector3(xBoundary, transform.position.y, 0);
+        }
+        else if (transform.position.x <= xBoundary * -1)
+        {
+            transform.position = new Vector3(xBoundary * -1, transform.position.y, 0);
+        }
+        if (transform.position.y >= yBoundary)
+        {
+            transform.position = new Vector3(transform.position.x, yBoundary, 0);
+        }
+        else if (transform.position.y <= yBoundary * -1)
+        {
+            transform.position = new Vector3(transform.position.x, yBoundary * -1, 0);
+        }
 
+
+    }
 }
