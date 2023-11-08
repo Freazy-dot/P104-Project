@@ -28,51 +28,32 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        //Mouse Position in the world. It's important to give it some distance from the camera. 
-        //If the screen point is calculated right from the exact position of the camera, then it will
-        //just return the exact same position as the camera, which is no good.
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
 
-        //Angle between mouse and this object
-        float angle = AngleBetweenPoints(transform.position, mouseWorldPosition);
+
+        Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.right) * Quaternion.Euler(offset, 0, 0);
 
 
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + offset));
-
-
-
-
-        float AngleBetweenPoints(Vector2 a, Vector2 b)
-        {
-            return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
-        }
+        transform.rotation = rot;
 
 
 
-    }
+        //move code
 
-    void FixedUpdate()
-    {
+        float distance = Vector3.Distance(transform.position, mouseWorldPosition);
 
-        Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float distance = Vector3.Distance(transform.position, targetPos);
 
         if (distance > minDistance)
         {
-            targetPos += ((Vector2)transform.position - targetPos).normalized * minDistance;
+            Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
+            mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * minDistance;
 
-            transform.position = Vector2.SmoothDamp(transform.position, targetPos, ref currentVel, 0.3f, speed);
+            transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition, ref currentVel, 0.3f, speed);
 
             PlayArea();
         }
-
-
-
-
-
     }
+
 
     void PlayArea()
     {
