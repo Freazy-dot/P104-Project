@@ -10,10 +10,14 @@ public class FishEat : MonoBehaviour
     private int foodCounter;
     [SerializeField] private TMP_Text text;
     [SerializeField] private int foodGoal;
+
+    public GameObject lvlManager;//fuix later
+
+    private LevelManager lvm;
     
     void Start()
     {
-        
+        lvm = lvlManager.GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -41,6 +45,7 @@ public class FishEat : MonoBehaviour
             //change scene
             Debug.Log("you did it dumbasss");
             goalCompleted = true;
+            lvm.SceneChange();
         }
     }
 }
