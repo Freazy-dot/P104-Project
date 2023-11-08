@@ -33,7 +33,7 @@ public class FishEat : MonoBehaviour
         {
             Destroy(food);
             foodCounter++;
-            text.SetText("Food Eaten: " + foodCounter);
+            text.SetText("= " + foodCounter);
             OnEat(foodCounter);
         }
     }
