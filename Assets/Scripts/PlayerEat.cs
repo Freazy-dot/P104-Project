@@ -6,8 +6,10 @@ using UnityEngine.UI;
 using TMPro;
 public class FishEat : MonoBehaviour
 {
-    public int foodCounter;
-    public TMP_Text text;
+    private bool goalCompleted = false;
+    private int foodCounter;
+    [SerializeField] private TMP_Text text;
+    [SerializeField] private int foodGoal;
     
     void Start()
     {
@@ -28,6 +30,17 @@ public class FishEat : MonoBehaviour
             Destroy(food);
             foodCounter++;
             text.SetText("Food Eaten: " + foodCounter);
+            OnEat(foodCounter);
+        }
+    }
+
+    void OnEat(int foodCounter)
+    {
+        if (foodCounter >= foodGoal && !goalCompleted)
+        {
+            //change scene
+            Debug.Log("you did it dumbasss");
+            goalCompleted = true;
         }
     }
 }

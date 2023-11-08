@@ -772,8 +772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be9e685f29247218c264010d09d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodCounter: 0
   text: {fileID: 603120628}
+  foodGoal: 4
 --- !u!1 &1132113245
 GameObject:
   m_ObjectHideFlags: 0
