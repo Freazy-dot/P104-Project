@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.right) * Quaternion.Euler(offset, 0, 0);
 
 
+        //rotate player to mouse
         transform.rotation = rot;
 
 
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         //move code
 
         float distance = Vector3.Distance(transform.position, mouseWorldPosition);
-
+            
 
         if (distance > minDistance)
         {

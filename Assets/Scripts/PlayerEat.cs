@@ -9,7 +9,7 @@ public class FishEat : MonoBehaviour
     private bool goalCompleted = false;
     private int foodCounter;
     [SerializeField] private TMP_Text text;
-    [SerializeField] private TMP_Text NoMoreFood;
+    //[SerializeField] private TMP_Text NoMoreFood;
     [SerializeField] private int foodGoal;
 
     public GameObject lvlManager;//fuix later
@@ -34,7 +34,7 @@ public class FishEat : MonoBehaviour
         {
             Destroy(food);
             foodCounter++;
-            text.SetText("" + foodCounter);
+            text.SetText("Food eaten: " + foodCounter);
             OnEat(foodCounter);
         }
     }
@@ -46,7 +46,7 @@ public class FishEat : MonoBehaviour
             //change scene
             
             Debug.Log("you did it dumbasss");
-            NoMoreFood.SetText("No More Food Left");
+            //NoMoreFood.SetText("No More Food Left");
             goalCompleted = true;
             lvm.SceneChange();
         }
