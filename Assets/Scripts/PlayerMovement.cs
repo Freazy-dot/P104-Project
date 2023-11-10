@@ -49,8 +49,10 @@ public class PlayerMovement : MonoBehaviour
             Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
             mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * minDistance;
 
-            transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition, ref currentVel, 0.3f, speed);
-
+            transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, 0.3f, speed);
+                //// mouseWorldPosition2D var ikke brugt i transform.position.
+                //// Vi skal finde ud af hvordan vi får currentVel == speed (måske rename til maxVelocity)
+                //// KUN på de ydre kanter af skærmen. Dog skal vi også tage højde for forskellige aspekt ratios.
             PlayArea();
         }
     }
