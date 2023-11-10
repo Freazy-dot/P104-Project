@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     private Rigidbody rb;
-    
+
     // Player Movement Related
     [SerializeField] private float offset;
     [SerializeField] private float maxVel;
@@ -19,38 +17,35 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float yBoundary;
     [SerializeField] public float xBoundary;
 
-    // User Specifications
-    private int screenSizeX;
-    private int screenSizeY;
-    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        screenSizeX = Screen.currentResolution.width;
-        screenSizeY = Screen.currentResolution.height;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
+        // defines the position of the mouse relative to the user's screen and relative to the game world.
+        Vector3 mouseScreenPosition = Input.mousePosition;
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition + Vector3.forward * 10f);
 
-
+        // rotates the user towards the cursor 
         Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.right) * Quaternion.Euler(offset, 0, 0);
-        
-        //rotate player to mouse
         transform.rotation = rot;
-        
-        //Movement
+
         float distance = Vector3.Distance(transform.position, mouseWorldPosition);
-        
+
         if (distance > minDistance)
         {
+            // defines an adjustedMaxVel that takes into account the distance between the player and the cursor
+            // in relation to the smallest value of the user's screen resolution. 
+            float adjustedMaxVelX = maxVel * Mathf.Clamp01(distance / Screen.width);
+            float adjustedMaxVelY = maxVel * Mathf.Clamp01(distance / Screen.height);
+            float adjustedMaxVel = Mathf.Min(adjustedMaxVelX, adjustedMaxVelY);
+
             Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
             mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * minDistance;
-            
-            transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, 0.3f, maxVel);
+
+            transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, smoothTime, adjustedMaxVel);
             PlayArea();
         }
     }
