@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     private Rigidbody rb;
-    
+
     // Player Movement Related
     [SerializeField] private float offset;
     [SerializeField] private float maxVel;
@@ -20,48 +18,41 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float xBoundary;
 
     // User Specifications
-    private int screenSizeX;
-    private int screenSizeY;
-    
+    private float minScreenSize;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        screenSizeX = Screen.currentResolution.width;
-        screenSizeY = Screen.currentResolution.height;
+        
+        // Steals the user's resolution and defines the smallest number into minScreenSize
+        // We might run into problems if a user tries to change their resolution while playing lol
+        minScreenSize = Mathf.Min(Screen.currentResolution.width, Screen.currentResolution.height);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Defines the mouse position on the screen to the game world. 
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
-
-
-        Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.right) * Quaternion.Euler(offset, 0, 0);
         
-        //rotate player to mouse
-        transform.rotation = rot;
-        
-        //move code
-
+        // Defines the direction and distance to the mouse.
+        Vector2 direction = ((Vector2)mouseWorldPosition - (Vector2)transform.position).normalized;
         float distance = Vector3.Distance(transform.position, mouseWorldPosition);
-            
-        // uhhh
         
-        
+        // Defines a speed multiplier based on how far away the cursor is from the nearest screen edge
+        // thereafter redefines baseVelocity via Lerp using the previous value, maxVel and the Clamp01
+        // float that defined the distance from the nearest edge.
+        float edgeSpeedMultiplier = Mathf.Clamp01((minScreenSize - Mathf.Min(Mathf.Abs(mouseWorldPosition.x), Mathf.Abs(mouseWorldPosition.y))) / minScreenSize);
+        float baseVelocity = Mathf.Clamp01(distance / minDistance) * maxVel;
+        baseVelocity = Mathf.Lerp(baseVelocity, maxVel, edgeSpeedMultiplier);
+
         if (distance > minDistance)
         {
-            Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
-            mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * minDistance;
-            
-            transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, 0.3f, maxVel);
-                //// mouseWorldPosition2D var ikke brugt i transform.position.
-                //// Vi skal finde ud af hvordan vi får currentVel == speed (måske rename til maxVelocity)
-                //// KUN på de ydre kanter af skærmen. Dog skal vi også tage højde for forskellige aspekt ratios.
+            Vector2 targetPosition = (Vector2)transform.position + direction * (baseVelocity * Time.deltaTime);
+            transform.position = Vector2.SmoothDamp(transform.position, targetPosition, ref currentVel, smoothTime, maxVel);
             PlayArea();
         }
     }
-
 
     void PlayArea()
     {
@@ -81,7 +72,5 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, yBoundary * -1, 0);
         }
-
-
     }
 }
