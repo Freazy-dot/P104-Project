@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         
         // Steals the user's resolution and defines the smallest number into minScreenSize
         // We might run into problems if a user tries to change their resolution while playing lol
-        minScreenSize = Mathf.Min(Screen.currentResolution.width, Screen.currentResolution.height);
+        minScreenSize = Mathf.Min(Screen.width, Screen.height);
     }
 
     // Update is called once per frame
@@ -34,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // Defines the mouse position on the screen to the game world. 
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
+        
+        // Rotate Player
+        Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.right) * Quaternion.Euler(offset, 0, 0);
+        transform.rotation = rot;
         
         // Defines the direction and distance to the mouse.
         Vector2 direction = ((Vector2)mouseWorldPosition - (Vector2)transform.position).normalized;
