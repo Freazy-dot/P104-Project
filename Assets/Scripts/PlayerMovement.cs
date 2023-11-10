@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody rb;
 
+    private Rigidbody rb;
+    
     // Player Movement Related
     [SerializeField] private float offset;
     [SerializeField] private float maxVel;
@@ -18,43 +20,39 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float xBoundary;
 
     // User Specifications
-    private float minScreenSize;
-
+    private int screenSizeX;
+    private int screenSizeY;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
-        // Steals the user's resolution and defines the smallest number into minScreenSize
-        // We might run into problems if a user tries to change their resolution while playing lol
-        minScreenSize = Mathf.Min(Screen.width, Screen.height);
+
+        screenSizeX = Screen.currentResolution.width;
+        screenSizeY = Screen.currentResolution.height;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Defines the mouse position on the screen to the game world. 
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
-        
-        // Rotate Player
+
+
         Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.right) * Quaternion.Euler(offset, 0, 0);
+        
+        //rotate player to mouse
         transform.rotation = rot;
         
-        // Defines the direction and distance to the mouse.
-        Vector2 direction = ((Vector2)mouseWorldPosition - (Vector2)transform.position).normalized;
+        //Movement
         float distance = Vector3.Distance(transform.position, mouseWorldPosition);
         
-        // testing
-        float edgeSpeedMultiplier = Mathf.Clamp01((minScreenSize - Mathf.Min(Mathf.Abs(mouseWorldPosition.x), Mathf.Abs(mouseWorldPosition.y))) / minScreenSize);
-        float baseVelocity = Mathf.Clamp01(distance / minDistance) * maxVel;
-
         if (distance > minDistance)
         {
             Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
-            mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * (edgeSpeedMultiplier * baseVelocity);
+            mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * minDistance;
             
-            transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, smoothTime, maxVel);
+            transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, 0.3f, maxVel);
+            PlayArea();
         }
-
     }
 
     void PlayArea()
