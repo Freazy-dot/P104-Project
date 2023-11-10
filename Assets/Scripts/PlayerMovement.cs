@@ -38,9 +38,12 @@ public class PlayerMovement : MonoBehaviour
         {
             // defines an adjustedMaxVel that takes into account the distance between the player and the cursor
             // in relation to the smallest value of the user's screen resolution. 
-            float adjustedMaxVelX = maxVel * Mathf.Clamp01(distance / Screen.width);
-            float adjustedMaxVelY = maxVel * Mathf.Clamp01(distance / Screen.height);
-            float adjustedMaxVel = Mathf.Min(adjustedMaxVelX, adjustedMaxVelY);
+            float distanceToEdgeX = Mathf.Min(Mathf.Abs(mouseScreenPosition.x), Mathf.Abs(Screen.width - mouseScreenPosition.x));
+            float distanceToEdgeY = Mathf.Min(Mathf.Abs(mouseScreenPosition.y), Mathf.Abs(Screen.height - mouseScreenPosition.y));
+
+            float adjustedMaxVelX = maxVel * Mathf.Clamp01(distanceToEdgeX / (Screen.width * 0.5f));
+            float adjustedMaxVelY = maxVel * Mathf.Clamp01(distanceToEdgeY / (Screen.height * 0.5f));
+            float adjustedMaxVel = Mathf.Max(adjustedMaxVelX, adjustedMaxVelY);
 
             Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
             mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * minDistance;
