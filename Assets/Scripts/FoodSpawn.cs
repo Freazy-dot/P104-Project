@@ -30,9 +30,10 @@ public class FoodSpawn : MonoBehaviour
 
         Vector3 randPos = new Vector3(randX, randY, 0);
 
-        float distance = Vector3.Distance(randPos, player.transform.position);
+        float distancePlayer = Vector3.Distance(randPos, player.transform.position);
+        float distanceFood = Vector3.Distance(randPos, GameObject.FindGameObjectWithTag("FishFood").transform.position);
 
-        if (distance > 2)
+        if (distancePlayer > 2 && distanceFood > 2)
         {
             Instantiate(prefap, new Vector3(randX, randY, 0), Quaternion.identity);
         }
