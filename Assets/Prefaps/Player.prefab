@@ -125,7 +125,7 @@ MonoBehaviour:
   offset: 90
   maxVel: 10
   smoothTime: 0.3
-  minDistance: 0
+  minDistance: 0.5
   yBoundary: 10
   xBoundary: 10
 --- !u!54 &7221170496027984535
