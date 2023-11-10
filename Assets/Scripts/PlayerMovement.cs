@@ -44,13 +44,15 @@ public class PlayerMovement : MonoBehaviour
         float distance = Vector3.Distance(transform.position, mouseWorldPosition);
         
         // testing
+        float edgeSpeedMultiplier = Mathf.Clamp01((minScreenSize - Mathf.Min(Mathf.Abs(mouseWorldPosition.x), Mathf.Abs(mouseWorldPosition.y))) / minScreenSize);
         float baseVelocity = Mathf.Clamp01(distance / minDistance) * maxVel;
 
         if (distance > minDistance)
         {
-            Vector2 targetPosition = (Vector2)transform.position + direction * (baseVelocity * Time.deltaTime);
-            transform.position = Vector2.SmoothDamp(transform.position, targetPosition, ref currentVel, smoothTime, maxVel);
-            PlayArea();
+            Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
+            mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * (edgeSpeedMultiplier * baseVelocity);
+            
+            transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, smoothTime, maxVel);
         }
 
     }
