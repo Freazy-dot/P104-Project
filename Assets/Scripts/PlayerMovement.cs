@@ -43,12 +43,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 direction = ((Vector2)mouseWorldPosition - (Vector2)transform.position).normalized;
         float distance = Vector3.Distance(transform.position, mouseWorldPosition);
         
-        // Defines a speed multiplier based on how far away the cursor is from the nearest screen edge
-        // thereafter redefines baseVelocity via Lerp using the previous value, maxVel and the Clamp01
-        // float that defined the distance from the nearest edge.
-        float edgeSpeedMultiplier = Mathf.Clamp01((minScreenSize - Mathf.Min(Mathf.Abs(mouseWorldPosition.x), Mathf.Abs(mouseWorldPosition.y))) / minScreenSize);
+        // testing
         float baseVelocity = Mathf.Clamp01(distance / minDistance) * maxVel;
-        baseVelocity = Mathf.Lerp(baseVelocity, maxVel, edgeSpeedMultiplier);
 
         if (distance > minDistance)
         {
@@ -56,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position = Vector2.SmoothDamp(transform.position, targetPosition, ref currentVel, smoothTime, maxVel);
             PlayArea();
         }
+
     }
 
     void PlayArea()
