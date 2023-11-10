@@ -6,9 +6,7 @@ using UnityEngine;
 public class FoodSpawn : MonoBehaviour
 {
     [SerializeField] private int foodSpawnCount;
-
     [SerializeField] private GameObject prefap;
-
     [SerializeField] private GameObject player;
 
     private PlayerMovement pm;
@@ -20,7 +18,6 @@ public class FoodSpawn : MonoBehaviour
         {
             SpawnFoodRandom();
         }
-        
     }
 
     void SpawnFoodRandom()
@@ -36,16 +33,8 @@ public class FoodSpawn : MonoBehaviour
         if (distancePlayer > 2 && distanceFood > 2)
         {
             Instantiate(prefap, new Vector3(randX, randY, 0), Quaternion.identity);
+            return;
         }
-        else
-        {
-            SpawnFoodRandom();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SpawnFoodRandom();
     }
 }
