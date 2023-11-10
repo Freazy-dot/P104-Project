@@ -20,12 +20,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float xBoundary;
 
     // User Specifications
-    private int screenSizeX = Screen.currentResolution.width;
-    private int screenSizeY = Screen.currentResolution.height;
+    private int screenSizeX;
+    private int screenSizeY;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        screenSizeX = Screen.currentResolution.width;
+        screenSizeY = Screen.currentResolution.height;
     }
 
     // Update is called once per frame

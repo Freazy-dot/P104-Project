@@ -891,6 +891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5869874773678371070, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
+      propertyPath: maxVel
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8695592893101083521, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
       propertyPath: text
       value: 
