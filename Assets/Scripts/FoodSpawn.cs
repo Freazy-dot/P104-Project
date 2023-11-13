@@ -8,6 +8,8 @@ public class FoodSpawn : MonoBehaviour
     [SerializeField] private int foodSpawnCount;
     [SerializeField] private GameObject prefap;
     [SerializeField] private GameObject player;
+    private List<GameObject> foodList = new List<GameObject>();
+    private float distanceFood = 4;
 
     private PlayerMovement pm;
     
@@ -28,11 +30,23 @@ public class FoodSpawn : MonoBehaviour
         Vector3 randPos = new Vector3(randX, randY, 0);
 
         float distancePlayer = Vector3.Distance(randPos, player.transform.position);
-        float distanceFood = Vector3.Distance(randPos, GameObject.FindGameObjectWithTag("FishFood").transform.position);
-
-        if (distancePlayer > 2 && distanceFood > 2)
+        
+        if (foodList.Count > 0)
         {
-            Instantiate(prefap, new Vector3(randX, randY, 0), Quaternion.identity);
+            foreach (GameObject food in foodList)
+            {
+                distanceFood = Vector3.Distance(randPos, food.transform.position);
+            }
+        }
+        
+        
+
+        
+
+        if (distancePlayer > 2 && distanceFood > 3)
+        {
+            GameObject fishFood = Instantiate(prefap, new Vector3(randX, randY, 0), Quaternion.identity);
+            foodList.Add(fishFood);
             return;
         }
         SpawnFoodRandom();

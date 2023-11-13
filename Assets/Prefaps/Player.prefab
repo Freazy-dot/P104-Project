@@ -122,10 +122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e30eb462ae815b45af62080e68566a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 90
   maxVel: 10
   smoothTime: 0.3
   minDistance: 0.5
+  LimitVelByRotScale: 15
+  degreesPerSecond: 135
+  offset: 90
   yBoundary: 10
   xBoundary: 10
 --- !u!54 &7221170496027984535

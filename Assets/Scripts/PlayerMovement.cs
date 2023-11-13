@@ -7,15 +7,25 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     // Player Movement Related
-    [SerializeField] private float offset;
+    [Header("Movement")]
     [SerializeField] private float maxVel;
     [SerializeField] private float smoothTime;
     [SerializeField] private float minDistance;
-    Vector2 currentVel;
+    [SerializeField] private float LimitVelByRotScale = 15f; //bigger number less limit
+    private Vector2 currentVel;
+
+    //player rotation
+    [Header("Rotation")]
+    [SerializeField] private float degreesPerSecond = 90;
+    [SerializeField] private float offset;
+    
 
     // Boundaries
+    [Header("Boundaries")]
     [SerializeField] public float yBoundary;
     [SerializeField] public float xBoundary;
+
+    
 
     void Start()
     {
@@ -30,7 +40,16 @@ public class PlayerMovement : MonoBehaviour
 
         // rotates the user towards the cursor 
         Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.right) * Quaternion.Euler(offset, 0, 0);
-        transform.rotation = rot;
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, Time.deltaTime * degreesPerSecond);
+
+        
+
+        //transform.rotation = rot;
+
+
+
+
 
         float distance = Vector3.Distance(transform.position, mouseWorldPosition);
 
@@ -57,7 +76,19 @@ public class PlayerMovement : MonoBehaviour
             Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
             mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * minDistance;
 
+            
+            
+            //slow movement if need to rotate a lot spore like yep yep
+            Vector2 dir = (mouseWorldPosition - transform.position).normalized;
+            float angle = Mathf.Abs(Vector2.Angle(transform.up, dir));    
+            adjustedMaxVel -= angle/LimitVelByRotScale;
+            if(adjustedMaxVel < 0) { adjustedMaxVel = 0; }
+            Debug.Log("angle " + angle);
+            Debug.Log("maxvel " +  adjustedMaxVel);
+
+            
             transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, smoothTime, adjustedMaxVel);
+            
             PlayArea();
         }
     }
