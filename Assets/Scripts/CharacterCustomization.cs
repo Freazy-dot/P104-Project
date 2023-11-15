@@ -136,7 +136,7 @@ public class CharacterCustomization : MonoBehaviour
         GetComponent<PlayerMovement>().enabled = true;
         GetComponent<FishEat>().enabled = true;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
 
         Destroy(this);
 
