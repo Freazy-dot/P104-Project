@@ -6,6 +6,9 @@ TagManager:
   tags:
   - FishFood
   - Slot
+  - Head
+  - SideFin
+  - Eye
   layers:
   - Default
   - TransparentFX

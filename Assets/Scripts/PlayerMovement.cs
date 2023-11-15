@@ -36,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
         camScript = Camera.main.gameObject.GetComponent<CameraScript>();
     }
 
+    private void Awake()
+    {
+        
+    }
+
     void Update()
     {
         // defines the position of the mouse relative to the user's screen and relative to the game world.
