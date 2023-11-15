@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public Transform player;
-    float zOffset = -10;
+    public float zOffset = -10;
     void Start()
     {
         

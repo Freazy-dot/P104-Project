@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - FishFood
+  - Slot
   layers:
   - Default
   - TransparentFX

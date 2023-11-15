@@ -15,10 +15,12 @@ public class FishEat : MonoBehaviour
     public GameObject lvlManager;//fuix later
 
     private LevelManager lvm;
+    private FoodSpawn fs;
     
     void Start()
     {
         lvm = lvlManager.GetComponent<LevelManager>();
+        fs = lvlManager.GetComponent<FoodSpawn>();
     }
 
     // Update is called once per frame
@@ -29,10 +31,24 @@ public class FishEat : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
+        //GameObject food = col.gameObject;
+        //if (food.CompareTag("FishFood"))
+        //{
+        //    fs.removeFromList(food);
+            
+        //    foodCounter++;
+        //    text.SetText("Food eaten: " + foodCounter);
+        //    OnEat(foodCounter);
+        //}
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
         GameObject food = col.gameObject;
         if (food.CompareTag("FishFood"))
         {
-            Destroy(food);
+            fs.removeFromList(food);
+
             foodCounter++;
             text.SetText("Food eaten: " + foodCounter);
             OnEat(foodCounter);

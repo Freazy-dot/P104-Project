@@ -8,10 +8,12 @@ public class FoodSpawn : MonoBehaviour
     [SerializeField] private int foodSpawnCount;
     [SerializeField] private GameObject prefap;
     [SerializeField] private GameObject player;
-    private List<GameObject> foodList = new List<GameObject>();
+    [HideInInspector] public List<GameObject> foodList = new List<GameObject>();
+    
     private float distanceFood = 4;
 
     private PlayerMovement pm;
+
     
     void Start()
     {
@@ -39,10 +41,6 @@ public class FoodSpawn : MonoBehaviour
             }
         }
         
-        
-
-        
-
         if (distancePlayer > 2 && distanceFood > 3)
         {
             GameObject fishFood = Instantiate(prefap, new Vector3(randX, randY, 0), Quaternion.identity);
@@ -50,5 +48,16 @@ public class FoodSpawn : MonoBehaviour
             return;
         }
         SpawnFoodRandom();
+    }
+    private void Update()
+    {
+      
+    }
+
+    public void removeFromList (GameObject removeObject)
+    {
+        foodList.Remove(removeObject);
+        //Destroy(removeObject);
+        removeObject.SetActive(false);
     }
 }

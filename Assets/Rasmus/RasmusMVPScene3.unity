@@ -4887,6 +4887,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5869874773678371070, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
+      propertyPath: testOffset
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869874773678371070, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
       propertyPath: degreesPerSecond
       value: 135
       objectReference: {fileID: 0}
@@ -19862,6 +19866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 255941964}
+  zOffset: -12.5
 --- !u!114 &1170970528
 MonoBehaviour:
   m_ObjectHideFlags: 0

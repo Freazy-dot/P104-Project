@@ -653,6 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1009221003}
+  zOffset: -10
 --- !u!1 &1597005410
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,63 +722,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2424951760819725533
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6296841820036407421, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_Name
-      value: Food
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.7439
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5365
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.025442634
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665636644000970420, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
 --- !u!1001 &3409815331112301209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -790,6 +734,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1009221002}
+    - target: {fileID: 291162053508784357, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+      propertyPath: foodSpawnCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -923,7 +871,6 @@ SceneRoots:
   - {fileID: 655536444}
   - {fileID: 7188672881551142579}
   - {fileID: 1170970526}
-  - {fileID: 2424951760819725533}
   - {fileID: 427047602}
   - {fileID: 1597005413}
   - {fileID: 1132113247}

@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
+    
+    private CameraScript camScript;
 
     // Player Movement Related
     [Header("Movement")]
@@ -18,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Rotation")]
     [SerializeField] private float degreesPerSecond = 90;
     [SerializeField] private float offset;
-    
+    public float depthOffset = -1; // maybe not needed i like how it looks
+        
 
     // Boundaries
     [Header("Boundaries")]
@@ -30,13 +33,14 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        camScript = Camera.main.gameObject.GetComponent<CameraScript>();
     }
 
     void Update()
     {
         // defines the position of the mouse relative to the user's screen and relative to the game world.
         Vector3 mouseScreenPosition = Input.mousePosition;
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition + Vector3.forward * 10f);
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition + Vector3.forward * ((camScript.zOffset - depthOffset) * -1));
 
         // rotates the user towards the cursor 
         Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.right) * Quaternion.Euler(offset, 0, 0);
@@ -83,8 +87,8 @@ public class PlayerMovement : MonoBehaviour
             float angle = Mathf.Abs(Vector2.Angle(transform.up, dir));    
             adjustedMaxVel -= angle/LimitVelByRotScale;
             if(adjustedMaxVel < 0) { adjustedMaxVel = 0; }
-            Debug.Log("angle " + angle);
-            Debug.Log("maxvel " +  adjustedMaxVel);
+            //Debug.Log("angle " + angle);
+            //Debug.Log("maxvel " +  adjustedMaxVel);
 
             
             transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, smoothTime, adjustedMaxVel);
