@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     // Boundaries
     [Header("Boundaries")]
-    [SerializeField] public float yBoundary;
-    [SerializeField] public float xBoundary;
+    [HideInInspector] public float yBoundary;
+    [HideInInspector] public float xBoundary;
 
     
 

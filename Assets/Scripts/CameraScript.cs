@@ -8,7 +8,7 @@ public class CameraScript : MonoBehaviour
     public float zOffset = -10;
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame

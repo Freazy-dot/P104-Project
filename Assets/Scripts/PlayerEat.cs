@@ -8,7 +8,7 @@ public class FishEat : MonoBehaviour
 {
     private bool goalCompleted = false;
     private int foodCounter;
-    [SerializeField] private TMP_Text text;
+    private TMP_Text text;
     //[SerializeField] private TMP_Text NoMoreFood;
     [SerializeField] private int foodGoal;
 
@@ -21,6 +21,7 @@ public class FishEat : MonoBehaviour
     {
         lvm = lvlManager.GetComponent<LevelManager>();
         fs = lvlManager.GetComponent<FoodSpawn>();
+        
     }
 
     // Update is called once per frame
@@ -29,21 +30,12 @@ public class FishEat : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision col)
-    {
-        //GameObject food = col.gameObject;
-        //if (food.CompareTag("FishFood"))
-        //{
-        //    fs.removeFromList(food);
-            
-        //    foodCounter++;
-        //    text.SetText("Food eaten: " + foodCounter);
-        //    OnEat(foodCounter);
-        //}
-    }
 
     private void OnTriggerEnter(Collider col)
     {
+        if (text == null) { text = GameObject.FindWithTag("FoodCounter").GetComponent<TMP_Text>(); }
+        
+
         GameObject food = col.gameObject;
         if (food.CompareTag("FishFood"))
         {

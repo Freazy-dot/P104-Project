@@ -7,7 +7,7 @@ public class FoodSpawn : MonoBehaviour
 {
     [SerializeField] private int foodSpawnCount;
     [SerializeField] private GameObject prefap;
-    [SerializeField] private GameObject player;
+    private GameObject player;
     [HideInInspector] public List<GameObject> foodList = new List<GameObject>();
     
     private float distanceFood = 4;
@@ -17,6 +17,8 @@ public class FoodSpawn : MonoBehaviour
     
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+
         pm = player.GetComponent<PlayerMovement>();
         for (int i = 0; i < foodSpawnCount; i++)
         {

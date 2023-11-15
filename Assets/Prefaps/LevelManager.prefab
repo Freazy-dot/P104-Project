@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5966452582342319161}
-  - component: {fileID: 291162053508784357}
   - component: {fileID: 7586857322493554573}
+  - component: {fileID: 291162053508784357}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -33,6 +33,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7586857322493554573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3937307186206034333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc12000b42d9a48c5aad9b9746c966de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endScene: 1
 --- !u!114 &291162053508784357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,17 +60,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodSpawnCount: 5
   prefap: {fileID: 6296841820036407421, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
-  player: {fileID: 0}
---- !u!114 &7586857322493554573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3937307186206034333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc12000b42d9a48c5aad9b9746c966de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  endScene: 1
+  foodList: []

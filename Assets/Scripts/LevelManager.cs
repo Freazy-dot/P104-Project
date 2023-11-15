@@ -7,11 +7,17 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private int endScene;
-        
+
+    [SerializeField] public float yBoundary;
+    [SerializeField] public float xBoundary;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject player = GameObject.FindWithTag("Player");
+        player.transform.position = Vector3.zero;
+        player.GetComponent<PlayerMovement>().xBoundary = xBoundary;
+        player.GetComponent<PlayerMovement>().yBoundary = yBoundary;
     }
 
     // Update is called once per frame
