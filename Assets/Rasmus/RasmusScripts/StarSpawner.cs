@@ -39,6 +39,12 @@ public class StarSpawner : MonoBehaviour
             // Instantiate a new star at the random spawn point with a random rotation
             GameObject newStar = Instantiate(selectedStarPrefab, randomSpawnPoint, randomRotation);
 
+            // Check if the spawned star is outside the collider bounds
+            if (!IsInsideCollider(newStar, spawnArea))
+            {
+                // Destroy the star if it's outside the collider bounds
+                Destroy(newStar);
+            }
             // You can do additional setup for the spawned object here if needed
         }
     }
@@ -51,5 +57,11 @@ public class StarSpawner : MonoBehaviour
         float randomZ = Random.Range(collider.bounds.min.z, collider.bounds.max.z);
 
         return new Vector3(randomX, randomY, randomZ);
+    }
+
+    bool IsInsideCollider(GameObject obj, Collider collider)
+    {
+        // Check if the object's position is inside the collider bounds
+        return collider.bounds.Contains(obj.transform.position);
     }
 }
