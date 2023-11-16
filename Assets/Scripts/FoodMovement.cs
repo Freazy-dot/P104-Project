@@ -11,6 +11,7 @@ public class FoodMovement : MonoBehaviour
     private float timeSince;
     private float timeSinceDelta;
     private PlayerMovement pm;
+    [SerializeField] private float fleeRange = 4;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class FoodMovement : MonoBehaviour
     void Update()
     {
 
-        if (Vector3.Distance(transform.position, player.transform.position) < 4)
+        if (Vector3.Distance(transform.position, player.transform.position) < fleeRange) //make enemy flee further
         {
             transform.position -= (player.transform.position - transform.position).normalized * Time.deltaTime * speed;
             

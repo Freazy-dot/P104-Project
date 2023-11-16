@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public float xBoundary;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GameObject player = GameObject.FindWithTag("Player");
         player.transform.position = Vector3.zero;

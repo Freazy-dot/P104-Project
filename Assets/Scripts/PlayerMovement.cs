@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Rotation")]
     [SerializeField] private float degreesPerSecond = 90;
     [SerializeField] private float offset;
-    public float depthOffset = -1; // maybe not needed i like how it looks
+    public float depthOffset = 0; // maybe not needed i like how it looks
         
 
     // Boundaries
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition + Vector3.forward * ((camScript.zOffset - depthOffset) * -1));
 
         // rotates the user towards the cursor 
-        Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.right) * Quaternion.Euler(offset, 0, 0);
+        Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.down) * Quaternion.Euler(offset, 0, 0);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, Time.deltaTime * degreesPerSecond);
 
