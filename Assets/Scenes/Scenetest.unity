@@ -443,8 +443,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e30eb462ae815b45af62080e68566a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxVel: 0
+  smoothTime: 0
+  minDistance: 0
+  LimitVelByRotScale: 15
+  degreesPerSecond: 90
   offset: 90
-  deadzone: 0
+  depthOffset: -1
+  yBoundary: 0
+  xBoundary: 0
 --- !u!54 &1009221008
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -578,6 +585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1009221003}
+  zOffset: -10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
