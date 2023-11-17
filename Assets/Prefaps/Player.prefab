@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 5869874773678371070}
   - component: {fileID: 8695592893101083521}
   - component: {fileID: 1945248307168904545}
+  - component: {fileID: 7370395729740590775}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -416,6 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be9e685f29247218c264010d09d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodCounter: 0
   foodGoal: 4
   lvlManager: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
 --- !u!114 &1945248307168904545
@@ -432,6 +434,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeScale: 0.25
   XRayGameObject: {fileID: 0}
+  imageZPos: -1
+  sprites: []
+--- !u!114 &7370395729740590775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399703330154350101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79804152930a9a946b3db437341c145d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2628509271902088721
 GameObject:
   m_ObjectHideFlags: 0

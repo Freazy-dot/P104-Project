@@ -38,14 +38,14 @@ public class PlayerXRay : MonoBehaviour
         //source end
 
         //flip at 90 degrees;
-        if (angle > 90 || angle < -90)
-        {
-            XRayGameObject.transform.GetChild(0).transform.localScale = new Vector3(-1, -1, 1);
-        }
-        else
-        {
-            XRayGameObject.transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
-        }
+        //if (angle > 90 || angle < -90)
+        //{
+        //    XRayGameObject.transform.GetChild(0).transform.localScale = new Vector3(-1, -1, 1);
+        //}
+        //else
+        //{
+        //    XRayGameObject.transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
+        //}
 
 
         XRayGameObject.transform.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
