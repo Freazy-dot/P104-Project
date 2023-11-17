@@ -15,12 +15,15 @@ public class PlayerXRay : MonoBehaviour
 
     [SerializeField] List<Sprite> sprites;
 
+    GameObject UIElement;
+
 
     
     // Start is called before the first frame update
     void Start()
     {
         fe = gameObject.GetComponent<FishEat>();
+        UIElement = XRayGameObject.transform.GetChild(0).gameObject;
 
     }
 
@@ -48,11 +51,15 @@ public class PlayerXRay : MonoBehaviour
         //}
 
 
-        XRayGameObject.transform.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
+        UIElement.transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
 
         if (fe.foodCounter > fe.foodGoal / 2)
         {
-            XRayGameObject.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = sprites[1];
+            UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[1];
+        }
+        else
+        {
+            UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[0];
         }
 
     }
