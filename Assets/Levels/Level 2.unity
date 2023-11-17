@@ -4443,7 +4443,7 @@ PrefabInstance:
     - target: {fileID: 326298382131107536, guid: 5b51cf290868e69408d5c5783b479a53, type: 3}
       propertyPath: sharedProfile
       value: 
-      objectReference: {fileID: 11400000, guid: 3e79c07bf9036ba40ab8b5ea08a887f6, type: 2}
+      objectReference: {fileID: 11400000, guid: 62e0b96a4eddd1f4e8a8cfc731e9afef, type: 2}
     - target: {fileID: 7066474591169996404, guid: 5b51cf290868e69408d5c5783b479a53, type: 3}
       propertyPath: m_LocalScale.x
       value: 252.46188
