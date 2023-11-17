@@ -11,13 +11,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public float yBoundary;
     [SerializeField] public float xBoundary;
 
+    private GameObject player;
+
     // Start is called before the first frame update
     void Awake()
     {
-        GameObject player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player");
         player.transform.position = Vector3.zero;
         player.GetComponent<PlayerMovement>().xBoundary = xBoundary;
         player.GetComponent<PlayerMovement>().yBoundary = yBoundary;
+    }
+    private void Start()
+    {
+        player.transform.position = Vector3.zero;
     }
 
     // Update is called once per frame

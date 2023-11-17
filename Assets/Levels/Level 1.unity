@@ -27846,11 +27846,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: xBoundary
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: yBoundary
-      value: 40
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

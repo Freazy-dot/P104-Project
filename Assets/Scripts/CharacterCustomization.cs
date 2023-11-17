@@ -47,7 +47,7 @@ public class CharacterCustomization : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(transform);
+        DontDestroyOnLoad(transform.parent);
     }
     public void NextButton (string type)
     {
@@ -135,6 +135,7 @@ public class CharacterCustomization : MonoBehaviour
         }
         GetComponent<PlayerMovement>().enabled = true;
         GetComponent<FishEat>().enabled = true;
+        GetComponent<PlayerXRay>().enabled = true;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
 

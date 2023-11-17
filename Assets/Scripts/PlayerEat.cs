@@ -7,10 +7,10 @@ using TMPro;
 public class FishEat : MonoBehaviour
 {
     private bool goalCompleted = false;
-    private int foodCounter;
+    [HideInInspector] public int foodCounter;
     private TMP_Text text;
     //[SerializeField] private TMP_Text NoMoreFood;
-    [SerializeField] private int foodGoal;
+    [SerializeField] public int foodGoal;
 
     public GameObject lvlManager;//fuix later
 

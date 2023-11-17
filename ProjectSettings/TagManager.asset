@@ -10,6 +10,7 @@ TagManager:
   - SideFin
   - Eye
   - FoodCounter
+  - XRay
   layers:
   - Default
   - TransparentFX

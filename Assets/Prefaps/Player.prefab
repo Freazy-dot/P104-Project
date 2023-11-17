@@ -224,9 +224,11 @@ GameObject:
   - component: {fileID: 8320013186367107900}
   - component: {fileID: 2668696523522718522}
   - component: {fileID: 1020747256497429778}
-  - component: {fileID: 5869874773678371070}
   - component: {fileID: 7221170496027984535}
+  - component: {fileID: -5597441729232993234}
+  - component: {fileID: 5869874773678371070}
   - component: {fileID: 8695592893101083521}
+  - component: {fileID: 1945248307168904545}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -325,27 +327,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5869874773678371070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2399703330154350101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e30eb462ae815b45af62080e68566a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxVel: 10
-  smoothTime: 0.3
-  minDistance: 0.5
-  LimitVelByRotScale: 15
-  degreesPerSecond: 135
-  offset: 90
-  depthOffset: -1
-  yBoundary: 10
-  xBoundary: 10
 --- !u!54 &7221170496027984535
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -373,6 +354,56 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &-5597441729232993234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399703330154350101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 22888391644d11442bf74c50156037c5, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &5869874773678371070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399703330154350101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e30eb462ae815b45af62080e68566a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVel: 10
+  smoothTime: 0.3
+  minDistance: 0.5
+  LimitVelByRotScale: 15
+  degreesPerSecond: 135
+  offset: 90
+  yBoundary: 10
+  xBoundary: 10
 --- !u!114 &8695592893101083521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,9 +416,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be9e685f29247218c264010d09d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
   foodGoal: 4
   lvlManager: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+--- !u!114 &1945248307168904545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399703330154350101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c3a39301b613f4b8d801cb44a4f0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeScale: 0.25
+  XRayGameObject: {fileID: 0}
 --- !u!1 &2628509271902088721
 GameObject:
   m_ObjectHideFlags: 0

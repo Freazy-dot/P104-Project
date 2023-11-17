@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Rotation")]
     [SerializeField] private float degreesPerSecond = 90;
     [SerializeField] private float offset;
-    public float depthOffset = 0; // maybe not needed i like how it looks
+    
+    
         
 
     // Boundaries
@@ -43,18 +44,15 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // defines the position of the mouse relative to the user's screen and relative to the game world.
+        // mouse on screen pos and in world
         Vector3 mouseScreenPosition = Input.mousePosition;
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition + Vector3.forward * ((camScript.zOffset - depthOffset) * -1));
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition + Vector3.forward * ((camScript.zOffset) * -1));
 
-        // rotates the user towards the cursor 
+        // actually rotate player
         Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.down) * Quaternion.Euler(offset, 0, 0);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, Time.deltaTime * degreesPerSecond);
 
-        
-
-        //transform.rotation = rot;
 
 
 
