@@ -6,11 +6,11 @@ using UnityEngine.UI;
 using TMPro;
 public class FishEat : MonoBehaviour
 {
-    private bool goalCompleted = false;
+    [HideInInspector] public bool goalCompleted = false;
     [HideInInspector] public int foodCounter;
     private TMP_Text text;
     //[SerializeField] private TMP_Text NoMoreFood;
-    [SerializeField] public int foodGoal;
+    [HideInInspector] public int foodGoal;
 
     public GameObject lvlManager;//fuix later
 
