@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerXRay : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerXRay : MonoBehaviour
     private FishEat fe;
 
     [SerializeField] List<Sprite> sprites;
+    [SerializeField] List<Sprite> spritesLvl3;
+    [SerializeField] List<Sprite> spritesLvl4;
 
     GameObject UIElement;
 
@@ -53,22 +56,67 @@ public class PlayerXRay : MonoBehaviour
 
         UIElement.transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
 
-        if (fe.foodCounter >= fe.foodGoal * 0.75)
+        #region images per scene
+
+        if (SceneManager.GetActiveScene().name == "Level 1" || SceneManager.GetActiveScene().name == "Level 2") //xray images for levels 1 and two
         {
-            UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[1];
+            if (fe.foodCounter >= fe.foodGoal * 0.75)
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[3];
+            }
+            else if (fe.foodCounter >= fe.foodGoal * 0.5)
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[2];
+            }
+            else if (fe.foodCounter >= fe.foodGoal * 0.25)
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[1];
+            }
+            else //no food
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[0];
+            }
         }
-        //else if (fe.foodCounter >= fe.foodGoal * 0.5)
-        //{
-        //    UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[2];
-        //}
-        //else if (fe.foodCounter >= fe.foodGoal * 0.25)
-        //{
-        //    UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[1];
-        //}
-        else //no food
+        else if (SceneManager.GetActiveScene().name == "Level 3")
+            {
+            if (fe.foodCounter >= fe.foodGoal * 0.75)
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl3[3];
+            }
+            else if (fe.foodCounter >= fe.foodGoal * 0.5)
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl3[2];
+            }
+            else if (fe.foodCounter >= fe.foodGoal * 0.25)
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl3[1];
+            }
+            else //no food
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl3[0];
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 4")
         {
-            UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[0];
+            if (fe.foodCounter >= fe.foodGoal * 0.75)
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl4[3];
+            }
+            else if (fe.foodCounter >= fe.foodGoal * 0.5)
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl4[2];
+            }
+            else if (fe.foodCounter >= fe.foodGoal * 0.25)
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl4[1];
+            }
+            else //no food
+            {
+                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl4[0];
+            }
         }
+
+        #endregion
 
     }
 
