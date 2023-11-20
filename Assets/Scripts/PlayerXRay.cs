@@ -53,11 +53,19 @@ public class PlayerXRay : MonoBehaviour
 
         UIElement.transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
 
-        if (fe.foodCounter > fe.foodGoal / 2)
+        if (fe.foodCounter >= fe.foodGoal * 0.75)
         {
             UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[1];
         }
-        else
+        //else if (fe.foodCounter >= fe.foodGoal * 0.5)
+        //{
+        //    UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[2];
+        //}
+        //else if (fe.foodCounter >= fe.foodGoal * 0.25)
+        //{
+        //    UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[1];
+        //}
+        else //no food
         {
             UIElement.GetComponent<UnityEngine.UI.Image>().sprite = sprites[0];
         }
