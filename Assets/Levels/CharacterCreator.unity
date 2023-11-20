@@ -2425,16 +2425,24 @@ PrefabInstance:
       objectReference: {fileID: 615939077}
     - target: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
       propertyPath: sprites.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
       propertyPath: sprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: a49eac16623c74b41b9d6fe6c8e65960, type: 3}
+      objectReference: {fileID: 21300000, guid: ad2fc7cfaed28f54e8cc9084bac8d347, type: 3}
     - target: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
       propertyPath: sprites.Array.data[1]
       value: 
       objectReference: {fileID: 21300000, guid: c35b90448002f964c969a9a6c6478a4d, type: 3}
+    - target: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9dd3e17e413321945afba4abb48ea87f, type: 3}
+    - target: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
+      propertyPath: sprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 416878ff2edd6ba4ea22f02fc26e87c8, type: 3}
     - target: {fileID: 2399703330154350101, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
       propertyPath: m_Name
       value: Player
