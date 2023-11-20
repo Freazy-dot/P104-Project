@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8055068502375145707}
   - component: {fileID: 326298382131107536}
   - component: {fileID: 8108975342867787166}
-  m_Layer: 6
-  m_Name: UnderWater
+  m_Layer: 3
+  m_Name: Level1Post
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192647196623518505}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.41, z: 18.4}
-  m_LocalScale: {x: 113, y: 27.21563, z: 52.18333}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.915861, y: 53.79667, z: -24.706669}
+  m_LocalScale: {x: 252.46188, y: 187.54024, z: 76.631226}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 07a021e279630704993440f706519b47, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 3e79c07bf9036ba40ab8b5ea08a887f6, type: 2}
   isGlobal: 0
   blendDistance: 0.5
   weight: 1
