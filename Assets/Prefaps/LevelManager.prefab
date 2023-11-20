@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc12000b42d9a48c5aad9b9746c966de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endScene: 1
+  endScene: 4
+  yBoundary: 0
+  xBoundary: 0
+  foodGoal: 4
 --- !u!114 &291162053508784357
 MonoBehaviour:
   m_ObjectHideFlags: 0

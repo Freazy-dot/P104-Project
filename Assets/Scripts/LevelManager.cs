@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public float yBoundary;
     [SerializeField] public float xBoundary;
 
+    [SerializeField] private int foodGoal = 4;//default val
+
     private GameObject player;
 
     // Start is called before the first frame update
@@ -24,6 +26,9 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         player.transform.position = Vector3.zero;
+        player.GetComponent<FishEat>().foodCounter = 0;
+        player.GetComponent<FishEat>().foodGoal = foodGoal;
+        player.GetComponent<FishEat>().goalCompleted = false;
     }
 
     // Update is called once per frame
