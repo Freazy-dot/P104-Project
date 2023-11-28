@@ -17272,7 +17272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544010ffe1ac5a8459777f4ae0262e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableTime: 7
+  disableTime: 6
 --- !u!4 &1174672823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4641787161742329099, guid: 4b2f8b748923bee40b4bc5fce7cc12f1, type: 3}
