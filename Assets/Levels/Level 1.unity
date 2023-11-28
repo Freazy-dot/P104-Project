@@ -17258,6 +17258,7 @@ MonoBehaviour:
   - {fileID: 913609713}
   objectsToEnable:
   - {fileID: 427047598}
+  - {fileID: 1816862979}
   delayBeforeDestroy: 6
 --- !u!114 &1170970531
 MonoBehaviour:
@@ -17271,6 +17272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544010ffe1ac5a8459777f4ae0262e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetComponent: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
   disableTime: 6
 --- !u!4 &1174672823 stripped
 Transform:
@@ -25682,7 +25684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5966452582342319161, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25757,6 +25759,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+--- !u!1 &1816862979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+  m_PrefabInstance: {fileID: 1816862978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1817777204
 PrefabInstance:
   m_ObjectHideFlags: 0

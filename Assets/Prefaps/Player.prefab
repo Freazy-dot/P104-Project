@@ -417,6 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25be9e685f29247218c264010d09d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalCompleted: 0
   foodCounter: 0
   foodGoal: 4
   lvlManager: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
@@ -436,6 +437,8 @@ MonoBehaviour:
   XRayGameObject: {fileID: 0}
   imageZPos: -1
   sprites: []
+  spritesLvl3: []
+  spritesLvl4: []
 --- !u!114 &7370395729740590775
 MonoBehaviour:
   m_ObjectHideFlags: 0
