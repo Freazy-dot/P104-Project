@@ -14514,7 +14514,6 @@ MonoBehaviour:
   objectsToDestroy:
   - {fileID: 900963583}
   objectsToEnable:
-  - {fileID: 1816862979}
   - {fileID: 574478558}
   delayBeforeDestroy: 5
 --- !u!114 &1170970531
@@ -20718,7 +20717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5966452582342319161, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20773,11 +20772,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
---- !u!1 &1816862979 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
-  m_PrefabInstance: {fileID: 1816862978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1817777204
 PrefabInstance:
   m_ObjectHideFlags: 0

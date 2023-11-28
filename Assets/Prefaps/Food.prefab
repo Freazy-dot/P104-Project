@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 351526811549473620}
   - component: {fileID: 3802383279092438383}
   - component: {fileID: 6692487605243916262}
+  - component: {fileID: 7724982770689346228}
   m_Layer: 0
   m_Name: Food
   m_TagString: FishFood
@@ -149,6 +150,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   fleeRange: 4
+--- !u!114 &7724982770689346228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296841820036407421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7434eb7463c9c1947aff05c0ed6c8243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructionParticles: {fileID: 9140742440436107005, guid: e9a22524fe8e3764b99d377f2335e7c8, type: 3}
+  destructionSound: {fileID: 0}
 --- !u!1001 &3843896840081845880
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16398,7 +16398,6 @@ MonoBehaviour:
   objectsToDestroy:
   - {fileID: 946077058}
   objectsToEnable:
-  - {fileID: 1373864966}
   - {fileID: 427047598}
   delayBeforeDestroy: 4.4
 --- !u!114 &1170970531
@@ -19063,11 +19062,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8492dc838edcd7d43965b957d9486683, type: 3}
---- !u!1 &1373864966 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
-  m_PrefabInstance: {fileID: 1816862978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1375476339
 GameObject:
   m_ObjectHideFlags: 0
@@ -24085,7 +24079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5966452582342319161, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: m_LocalPosition.x
