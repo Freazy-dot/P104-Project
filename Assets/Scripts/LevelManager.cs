@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private int endScene;
+    private int endScene;
 
     [SerializeField] private Transform yUpBoundary;
     [SerializeField] private Transform yDownBoundary;
@@ -36,12 +36,15 @@ public class LevelManager : MonoBehaviour
         player.GetComponent<FishEat>().foodCounter = 0;
         player.GetComponent<FishEat>().foodGoal = foodGoal;
         player.GetComponent<FishEat>().goalCompleted = false;
+
+        endScene = SceneManager.sceneCountInBuildSettings - 1;//index start at 0 omg lol haha
     }
 
     void Update()
     {
+        //Debug.Log($"scene = {SceneManager.GetActiveScene().buildIndex} and end scene = {endScene}");
         // Decrement the countdown timer
-        
+
 
         // Check if the food goal has been achieved
         if (player.GetComponent<FishEat>().foodCounter >= foodGoal)
@@ -49,11 +52,11 @@ public class LevelManager : MonoBehaviour
             ActivateObject();
             DisableObjects();
             countdownTimer -= Time.deltaTime;
-            Debug.Log(countdownTimer);
+            //Debug.Log(countdownTimer);
             // Check if the countdown timer has reached 0
             if (countdownTimer <= 0.0f)
             {
-                Debug.Log("in " + countdownTimer);
+               // Debug.Log("in " + countdownTimer);
                 SceneChange();
             }
         }
@@ -61,6 +64,7 @@ public class LevelManager : MonoBehaviour
 
     public void SceneChange()
     {
+        
         if (SceneManager.GetActiveScene().buildIndex == endScene)
         {
             Debug.Log("haha u won idiott pls close game");
