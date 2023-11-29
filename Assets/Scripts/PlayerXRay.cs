@@ -19,9 +19,10 @@ public class PlayerXRay : MonoBehaviour
     [SerializeField] List<Sprite> spritesLvl4;
 
     GameObject UIElement;
+    [HideInInspector] public bool canXray;
 
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,17 @@ public class PlayerXRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canXray)
+        {
+            Time.timeScale = 1f;
+            XRayGameObject.SetActive(false);
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(true);
+
+            }
+        }
+
         XRayGameObject.transform.position = new Vector3 (transform.position.x, transform.position.y, imageZPos);
 
         //i hate rotations taken from https://discussions.unity.com/t/rotate-object-weapon-towards-mouse-cursor-2d/1172/5
@@ -122,6 +134,7 @@ public class PlayerXRay : MonoBehaviour
 
     private void OnXRay (InputValue value)
     {
+        if(!canXray) { return; }
         if (value.isPressed)
         {
 

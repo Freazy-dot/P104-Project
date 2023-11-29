@@ -52,6 +52,7 @@ public class LevelManager : MonoBehaviour
             ActivateObject();
             DisableObjects();
             countdownTimer -= Time.deltaTime;
+            player.GetComponent<PlayerXRay>().canXray = false;
             //Debug.Log(countdownTimer);
             // Check if the countdown timer has reached 0
             if (countdownTimer <= 0.0f)

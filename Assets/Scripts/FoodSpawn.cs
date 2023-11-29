@@ -37,13 +37,15 @@ public class FoodSpawn : MonoBehaviour
         
         if (foodList.Count > 0)
         {
+            float currDist = 10;
             foreach (GameObject food in foodList)
             {
-                distanceFood = Vector3.Distance(randPos, food.transform.position);
+                currDist = Vector3.Distance(randPos, food.transform.position);
+                if (currDist < distanceFood) { distanceFood = currDist; } //distance food will be closest food or 10 if no food close
             }
         }
         
-        if (distancePlayer > 2 && distanceFood > 3)
+        if (distancePlayer > 4 && distanceFood > 3)
         {
             GameObject fishFood = Instantiate(prefap, new Vector3(randX, randY, 0), Quaternion.identity);
             foodList.Add(fishFood);
