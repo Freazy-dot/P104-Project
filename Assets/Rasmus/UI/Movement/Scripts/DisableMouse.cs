@@ -6,12 +6,14 @@ public class DisableMouse : MonoBehaviour
     public float disableTime = 5.0f; // Set the time to disable the mouse
     private bool allowMouseInput = false;
     private PlayerMovement pm;
+    private PlayerXRay px;
 
     void Start()
     {
         // Start the coroutine to disable the mouse for the specified time
 
         pm = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        px = pm.gameObject.GetComponent<PlayerXRay>();
         StartCoroutine(DisableMouseForTime());
 
         
@@ -34,8 +36,7 @@ public class DisableMouse : MonoBehaviour
     IEnumerator DisableMouseForTime()
     {
         //// Disable the mouse cursor and input
-        //Cursor.visible = false;
-        //Cursor.lockState = CursorLockMode.Locked;
+
 
         //// Disable mouse buttons
         //allowMouseInput = false;
@@ -44,15 +45,19 @@ public class DisableMouse : MonoBehaviour
         //yield return new WaitForSeconds(disableTime);
 
         //// Enable the mouse cursor and input again
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
+        
 
         //// Enable mouse buttons
         //allowMouseInput = true;
 
-
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         pm.canMove = false;
+        px.canXray = false;
         yield return new WaitForSeconds(disableTime);
         pm.canMove = true;
+        px.canXray = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
