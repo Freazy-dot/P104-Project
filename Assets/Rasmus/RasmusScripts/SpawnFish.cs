@@ -10,6 +10,7 @@ public class SpawnFish : MonoBehaviour
     public float spawnInterval = 2f;  // Interval between spawns in seconds
     public Vector3 minScale = new Vector3(0.5f, 0.5f, 1f);  // Minimum scale for spawned objects
     public Vector3 maxScale = new Vector3(2f, 2f, 1f);  // Maximum scale for spawned objects
+    public float destroyTimer = 5f;  // Time before the spawned object is destroyed
 
     private void Start()
     {
@@ -36,6 +37,9 @@ public class SpawnFish : MonoBehaviour
             // Set a random scale for the spawned object
             Vector3 randomScale = new Vector3(Random.Range(minScale.x, maxScale.x), Random.Range(minScale.y, maxScale.y), 1f);
             spawnedObject.transform.localScale = randomScale;
+
+            // Destroy the spawned object after the specified time
+            Destroy(spawnedObject, destroyTimer);
         }
     }
 }
