@@ -7,8 +7,6 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private int endScene;
 
-    public int test = 2;
-
     [SerializeField] private Transform yUpBoundary;
     [SerializeField] private Transform yDownBoundary;
     [SerializeField] private Transform xLeftBoundary;
@@ -16,7 +14,7 @@ public class LevelManager : MonoBehaviour
 
 
     [SerializeField] private int foodGoal = 4; //default val
-    [SerializeField] private float countdownTimer = 10.0f; // Set the initial countdown time
+    [SerializeField] private float countdownTimer = 4.4f; // Set the initial countdown time
     [SerializeField] private GameObject objectToActivate; // Reference to the GameObject to activate
     [SerializeField] private List<GameObject> objectsToDisable; // List of GameObjects to disable
 
@@ -43,17 +41,20 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         // Decrement the countdown timer
-        countdownTimer -= Time.deltaTime;
+        
 
         // Check if the food goal has been achieved
         if (player.GetComponent<FishEat>().foodCounter >= foodGoal)
         {
+            ActivateObject();
+            DisableObjects();
+            countdownTimer -= Time.deltaTime;
+            Debug.Log(countdownTimer);
             // Check if the countdown timer has reached 0
             if (countdownTimer <= 0.0f)
             {
+                Debug.Log("in " + countdownTimer);
                 SceneChange();
-                ActivateObject();
-                DisableObjects();
             }
         }
     }

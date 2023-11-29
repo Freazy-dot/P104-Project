@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public float yDownBoundary;
     [HideInInspector] public float xLeftBoundary;
     [HideInInspector] public float xRightBoundary;
+    [HideInInspector] public bool canMove;
 
     void Start()
     {
@@ -44,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!canMove) { return; }
         // mouse on screen pos and in world
         Vector3 mouseScreenPosition = Input.mousePosition;
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition + Vector3.forward * ((camScript.zOffset) * -1));

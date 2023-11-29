@@ -43,20 +43,20 @@ public class FishEat : MonoBehaviour
 
             foodCounter++;
             text.SetText("Food eaten: " + foodCounter);
-            OnEat(foodCounter);
+            //OnEat(foodCounter);
         }
     }
 
-    void OnEat(int foodCounter)
-    {
-        if (foodCounter >= foodGoal && !goalCompleted)
-        {
-            //change scene
+    //void OnEat(int foodCounter)
+    //{
+    //    if (foodCounter >= foodGoal && !goalCompleted)
+    //    {
+    //        //change scene
             
-            Debug.Log("you did it dumbasss");
-            //NoMoreFood.SetText("No More Food Left");
-            goalCompleted = true;
-            lvm.SceneChange();
-        }
-    }
+    //        Debug.Log("you did it dumbasss");
+    //        //NoMoreFood.SetText("No More Food Left");
+    //        goalCompleted = true;
+    //        lvm.SceneChange();
+    //    }
+    //}
 }
