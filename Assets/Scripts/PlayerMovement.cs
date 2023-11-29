@@ -26,10 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     // Boundaries
     [Header("Boundaries")]
-    [HideInInspector] public float yBoundary;
-    [HideInInspector] public float xBoundary;
-
-    
+    [HideInInspector] public float yUpBoundary;
+    [HideInInspector] public float yDownBoundary;
+    [HideInInspector] public float xLeftBoundary;
+    [HideInInspector] public float xRightBoundary;
 
     void Start()
     {
@@ -102,21 +102,34 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayArea()
     {
-        if (transform.position.x >= xBoundary)
+        if (transform.position.x >= xRightBoundary)
         {
-            transform.position = new Vector3(xBoundary, transform.position.y, 0);
+            transform.position = new Vector3(xRightBoundary, transform.position.y, 0);
         }
-        else if (transform.position.x <= xBoundary * -1)
+        else if (transform.position.x <= xLeftBoundary)
         {
-            transform.position = new Vector3(xBoundary * -1, transform.position.y, 0);
+            transform.position = new Vector3(xLeftBoundary, transform.position.y, 0);
         }
-        if (transform.position.y >= yBoundary)
+        if (transform.position.y >= yUpBoundary)
         {
-            transform.position = new Vector3(transform.position.x, yBoundary, 0);
+            transform.position = new Vector3(transform.position.x, yUpBoundary, 0);
         }
-        else if (transform.position.y <= yBoundary * -1)
+        else if (transform.position.y <= yDownBoundary)
         {
-            transform.position = new Vector3(transform.position.x, yBoundary * -1, 0);
+            transform.position = new Vector3(transform.position.x, yDownBoundary, 0);
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        //Debug.Log(collision.gameObject.tag);
+        //if(collision.gameObject.tag != "Border") {  return; }
+        //transform.position = new Vector3(collision.transform.position.x + 0.5f, transform.position.y, 0);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "Border") { return; }
+
+        //transform.position = new Vector3(collision.transform.position.x + 0.5f, transform.position.y, 0);
     }
 }

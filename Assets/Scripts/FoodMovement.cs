@@ -59,21 +59,21 @@ public class FoodMovement : MonoBehaviour
 
     void PlayArea()
     {
-        if (transform.position.x >= pm.xBoundary)
+        if (transform.position.x >= pm.xRightBoundary)
         {
-            transform.position = new Vector3(pm.xBoundary, transform.position.y, 0);
+            transform.position = new Vector3(pm.xRightBoundary, transform.position.y, 0);
         }
-        else if (transform.position.x <= pm.xBoundary * -1)
+        else if (transform.position.x <= pm.xLeftBoundary)
         {
-            transform.position = new Vector3(pm.xBoundary * -1, transform.position.y, 0);
+            transform.position = new Vector3(pm.xLeftBoundary, transform.position.y, 0);
         }
-        if (transform.position.y >= pm.yBoundary)
+        if (transform.position.y >= pm.yUpBoundary)
         {
-            transform.position = new Vector3(transform.position.x, pm.yBoundary, 0);
+            transform.position = new Vector3(transform.position.x, pm.yUpBoundary, 0);
         }
-        else if (transform.position.y <= pm.yBoundary * -1)
+        else if (transform.position.y <= pm.yDownBoundary)
         {
-            transform.position = new Vector3(transform.position.x, pm.yBoundary * -1, 0);
+            transform.position = new Vector3(transform.position.x, pm.yDownBoundary, 0);
         }
     }
 }

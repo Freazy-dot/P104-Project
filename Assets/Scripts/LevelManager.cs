@@ -6,8 +6,15 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private int endScene;
-    [SerializeField] public float yBoundary;
-    [SerializeField] public float xBoundary;
+
+    public int test = 2;
+
+    [SerializeField] private Transform yUpBoundary;
+    [SerializeField] private Transform yDownBoundary;
+    [SerializeField] private Transform xLeftBoundary;
+    [SerializeField] private Transform xRightBoundary;
+
+
     [SerializeField] private int foodGoal = 4; //default val
     [SerializeField] private float countdownTimer = 10.0f; // Set the initial countdown time
     [SerializeField] private GameObject objectToActivate; // Reference to the GameObject to activate
@@ -19,8 +26,10 @@ public class LevelManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         player.transform.position = Vector3.zero;
-        player.GetComponent<PlayerMovement>().xBoundary = xBoundary;
-        player.GetComponent<PlayerMovement>().yBoundary = yBoundary;
+        player.GetComponent<PlayerMovement>().xRightBoundary = xRightBoundary.position.x;
+        player.GetComponent<PlayerMovement>().xLeftBoundary = xLeftBoundary.position.x;
+        player.GetComponent<PlayerMovement>().yUpBoundary = yUpBoundary.position.y;
+        player.GetComponent<PlayerMovement>().yDownBoundary = yDownBoundary.position.y;
     }
 
     private void Start()

@@ -49,6 +49,9 @@ MonoBehaviour:
   yBoundary: 0
   xBoundary: 0
   foodGoal: 4
+  countdownTimer: 10
+  objectToActivate: {fileID: 0}
+  objectsToDisable: []
 --- !u!114 &291162053508784357
 MonoBehaviour:
   m_ObjectHideFlags: 0

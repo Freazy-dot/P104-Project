@@ -28,8 +28,8 @@ public class FoodSpawn : MonoBehaviour
 
     void SpawnFoodRandom()
     {
-        float randX = Random.Range(pm.xBoundary * -1, pm.xBoundary);
-        float randY = Random.Range(pm.yBoundary * -1, pm.yBoundary);
+        float randX = Random.Range(pm.xLeftBoundary, pm.xRightBoundary);
+        float randY = Random.Range(pm.yUpBoundary, pm.yDownBoundary);
 
         Vector3 randPos = new Vector3(randX, randY, 0);
 
