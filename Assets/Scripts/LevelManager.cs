@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private int endScene;
+    private int endScene;
 
     [SerializeField] private Transform yUpBoundary;
     [SerializeField] private Transform yDownBoundary;
