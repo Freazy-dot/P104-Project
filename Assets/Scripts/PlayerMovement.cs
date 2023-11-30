@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public float yDownBoundary;
     [HideInInspector] public float xLeftBoundary;
     [HideInInspector] public float xRightBoundary;
+
+    //used for transitions
     [HideInInspector] public bool canMove;
 
     void Start()
@@ -43,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    void Update()
+    void Update() //old update with adjustedstuff idk what it does tho
     {
         if (!canMove) { return; }
         // mouse on screen pos and in world
@@ -55,52 +57,80 @@ public class PlayerMovement : MonoBehaviour
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, Time.deltaTime * degreesPerSecond);
 
-
-
-
-
-
         float distance = Vector3.Distance(transform.position, mouseWorldPosition);
 
         if (distance > minDistance)
         {
-            // defines two adjustedMaxVel and distanceToEdge variables that are used to measure the velocity
-            // using the relation between the cursor, the edges and the player on both the y and x-axis.
-            float distanceToEdgeX = Mathf.Min(Mathf.Abs(mouseScreenPosition.x), Mathf.Abs(Screen.width - mouseScreenPosition.x));
-            float distanceToEdgeY = Mathf.Min(Mathf.Abs(mouseScreenPosition.y), Mathf.Abs(Screen.height - mouseScreenPosition.y));
-
-            float adjustedMaxVelX = maxVel;
-            float adjustedMaxVelY = maxVel;
-
-            // ensures that when the user's cursor exceeds the smallest value of their screen resolution,
-            // the player continues at maxVel instead of slowing down.
-            if (distanceToEdgeX > 0.5f * Screen.width)
-                adjustedMaxVelX *= 1 / Mathf.Clamp01(distanceToEdgeX / (0.5f * Screen.width));
-            if (distanceToEdgeY > 0.5f * Screen.height)
-                adjustedMaxVelY *= 1 / Mathf.Clamp01(distanceToEdgeY / (0.5f * Screen.height));
-
             // does the movement stuff
-            float adjustedMaxVel = Mathf.Max(adjustedMaxVelX, adjustedMaxVelY);
+            float adjustedMaxVel = maxVel;
 
             Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
-            mouseWorldPosition2D += ((Vector2)transform.position - mouseWorldPosition2D).normalized * minDistance;
 
-            
-            
             //slow movement if need to rotate a lot spore like yep yep
             Vector2 dir = (mouseWorldPosition - transform.position).normalized;
-            float angle = Mathf.Abs(Vector2.Angle(transform.up, dir));    
-            adjustedMaxVel -= angle/LimitVelByRotScale;
-            if(adjustedMaxVel < 0) { adjustedMaxVel = 0; }
-            //Debug.Log("angle " + angle);
-            //Debug.Log("maxvel " +  adjustedMaxVel);
+            float angle = Mathf.Abs(Vector2.Angle(transform.up, dir));
+            adjustedMaxVel -= angle / LimitVelByRotScale;
+            if (adjustedMaxVel < 0) { adjustedMaxVel = 0; }
 
-            
             transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, smoothTime, adjustedMaxVel);
-            
+
             PlayArea();
         }
     }
+
+    //void Update() //old update with adjustedstuff idk what it does tho
+    //{
+    //    if (!canMove) { return; }
+    //    // mouse on screen pos and in world
+    //    Vector3 mouseScreenPosition = Input.mousePosition;
+    //    Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition + Vector3.forward * ((camScript.zOffset) * -1));
+
+    //    // actually rotate player
+    //    Quaternion rot = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector3.down) * Quaternion.Euler(offset, 0, 0);
+
+    //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, Time.deltaTime * degreesPerSecond);
+
+    //    float distance = Vector3.Distance(transform.position, mouseWorldPosition);
+
+    //    if (distance > minDistance)
+    //    {
+    //        // defines two adjustedMaxVel and distanceToEdge variables that are used to measure the velocity
+    //        // using the relation between the cursor, the edges and the player on both the y and x-axis.
+    //        float distanceToEdgeX = Mathf.Min(Mathf.Abs(mouseScreenPosition.x), Mathf.Abs(Screen.width - mouseScreenPosition.x));
+    //        float distanceToEdgeY = Mathf.Min(Mathf.Abs(mouseScreenPosition.y), Mathf.Abs(Screen.height - mouseScreenPosition.y));
+
+    //        float adjustedMaxVelX = maxVel;
+    //        float adjustedMaxVelY = maxVel;
+
+    //        // ensures that when the user's cursor exceeds the smallest value of their screen resolution,
+    //        the player continues at maxVel instead of slowing down.
+    //        if (distanceToEdgeX > 0.5f * Screen.width)
+    //        {
+    //            adjustedMaxVelX *= 1 / Mathf.Clamp01(distanceToEdgeX / (0.5f * Screen.width));
+    //        }
+
+    //        if (distanceToEdgeY > 0.5f * Screen.height)
+    //        {
+    //            adjustedMaxVelY *= 1 / Mathf.Clamp01(distanceToEdgeY / (0.5f * Screen.height));
+    //        }
+
+    //        // does the movement stuff
+    //        float adjustedMaxVel = Mathf.Max(adjustedMaxVelX, adjustedMaxVelY);
+
+    //        Vector2 mouseWorldPosition2D = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
+
+    //        //slow movement if need to rotate a lot spore like yep yep
+    //        Vector2 dir = (mouseWorldPosition - transform.position).normalized;
+    //        float angle = Mathf.Abs(Vector2.Angle(transform.up, dir));    
+    //        adjustedMaxVel -= angle/LimitVelByRotScale;
+    //        if(adjustedMaxVel < 0) { adjustedMaxVel = 0; }
+
+    //        transform.position = Vector2.SmoothDamp(transform.position, mouseWorldPosition2D, ref currentVel, smoothTime, adjustedMaxVel);
+
+    //        PlayArea();
+
+    //    }
+    //}
 
     void PlayArea()
     {

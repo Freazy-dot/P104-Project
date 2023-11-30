@@ -19,21 +19,17 @@ public class CharacterCustomization : MonoBehaviour
 
     void Start()
     {
-        foreach (Transform child in transform)
+        foreach (Transform child in transform) //get every child
         {
-            if (child.tag == "Slot")
+            if (child.tag == "Slot")//if child is tagged with slot
             {
-                foreach (Transform grandChild in child)
+                foreach (Transform grandChild in child)//the grandchildren will be the individual customization options nested under the empty gameobjects
                 {
-
-                    //slotOptionList.Add(grandChild);
-                    //slotOptionList[0].gameObject.SetActive(true);
-
-                    if(grandChild.gameObject.tag == "Head")
+                    if(grandChild.gameObject.tag == "Head")//if a head option
                     {
-                        headOptionList.Add(grandChild);
-                        headOptionList[0].gameObject.SetActive(true);
-                    }else if (grandChild.gameObject.tag == "SideFin")
+                        headOptionList.Add(grandChild);//add to list of headoptions
+                        headOptionList[0].gameObject.SetActive(true);//set the first option as active
+                    }else if (grandChild.gameObject.tag == "SideFin")//repeat for sidefin
                     {
                         finOptionList.Add(grandChild);
                         finOptionList[0].gameObject.SetActive(true);
@@ -42,7 +38,7 @@ public class CharacterCustomization : MonoBehaviour
             }
         }
     }
-
+    
     private void Awake()
     {
         DontDestroyOnLoad(transform.parent);
