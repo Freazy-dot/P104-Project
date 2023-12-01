@@ -916,7 +916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.5
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -3067,9 +3067,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
+      propertyPath: timeScale
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
       propertyPath: XRayGameObject
       value: 
       objectReference: {fileID: 615939077}
+    - target: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
+      propertyPath: fovChangeSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1945248307168904545, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
       propertyPath: sprites.Array.size
       value: 4

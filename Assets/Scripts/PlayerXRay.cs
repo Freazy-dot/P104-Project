@@ -18,8 +18,24 @@ public class PlayerXRay : MonoBehaviour
     [SerializeField] List<Sprite> spritesLvl3;
     [SerializeField] List<Sprite> spritesLvl4;
 
+    CanvasScaler scaler;
     GameObject UIElement;
     [HideInInspector] public bool canXray;
+
+    private Camera mainCam;
+    
+    [SerializeField] private float targetFov = 40f;
+    [SerializeField] private float targetScale = 1f;
+
+    private bool fovLerpActive = false;
+
+    private float toFov;
+    [SerializeField] private float fovChangeSpeed = 2f;
+    private float defaultFov;
+
+    private float toScale;
+    [SerializeField] private float scaleChangeSpeed = 2f;
+    private float defaultScale;
 
 
 
@@ -28,12 +44,21 @@ public class PlayerXRay : MonoBehaviour
     {
         fe = gameObject.GetComponent<FishEat>();
         UIElement = XRayGameObject.transform.GetChild(0).gameObject;
+        scaler = XRayGameObject.GetComponent<CanvasScaler>();
+
+        mainCam = Camera.main;
+        defaultFov = mainCam.fieldOfView;
+        defaultScale = scaler.scaleFactor;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (mainCam == null)
+        {
+            mainCam = Camera.main;
+        }
         if (!canXray)
         {
             Time.timeScale = 1f;
@@ -45,14 +70,16 @@ public class PlayerXRay : MonoBehaviour
             }
         }
 
+        FovChanging();
+
         XRayGameObject.transform.position = new Vector3 (transform.position.x, transform.position.y, imageZPos);
 
         //i hate rotations taken from https://discussions.unity.com/t/rotate-object-weapon-towards-mouse-cursor-2d/1172/5
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 objectPos = Camera.main.WorldToScreenPoint (transform.position);
-        mousePos.x = mousePos.x - objectPos.x;
-        mousePos.y = mousePos.y - objectPos.y;
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        //Vector3 mousePos = Input.mousePosition;
+        //Vector3 objectPos = Camera.main.WorldToScreenPoint (transform.position);
+        //mousePos.x = mousePos.x - objectPos.x;
+        //mousePos.y = mousePos.y - objectPos.y;
+        //float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         //source end
 
         //flip at 90 degrees;
@@ -66,7 +93,7 @@ public class PlayerXRay : MonoBehaviour
         //}
 
 
-        UIElement.transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
+        //UIElement.transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
 
         #region images per scene
 
@@ -137,8 +164,6 @@ public class PlayerXRay : MonoBehaviour
         if(!canXray) { return; }
         if (value.isPressed)
         {
-
-            //Debug.Log("ispressed");
             Time.timeScale = timeScale;
             XRayGameObject.SetActive(true);
 
@@ -147,11 +172,13 @@ public class PlayerXRay : MonoBehaviour
                 child.gameObject.SetActive(false);
             }
 
+            toFov = targetFov;
+            toScale = targetScale;
+            fovLerpActive = true;
 
         }
         else
         {
-            //Debug.Log("notpressed");
             Time.timeScale = 1f;
             XRayGameObject.SetActive(false);
             foreach (Transform child in transform)
@@ -159,9 +186,17 @@ public class PlayerXRay : MonoBehaviour
                 child.gameObject.SetActive(true);
 
             }
+            toFov = defaultFov;
+            toScale = defaultScale;
+            fovLerpActive = false;
         }
+    }
 
-        
+    private void FovChanging ()
+    {
+        if(mainCam.fieldOfView == defaultFov && scaler.scaleFactor == defaultScale && !fovLerpActive) { return; }
+        mainCam.fieldOfView = Mathf.MoveTowards(mainCam.fieldOfView, toFov, fovChangeSpeed * Time.unscaledDeltaTime);
 
+        scaler.scaleFactor = Mathf.MoveTowards(scaler.scaleFactor, toScale, scaleChangeSpeed * Time.unscaledDeltaTime);
     }
 }
