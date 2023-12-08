@@ -3266,6 +3266,10 @@ PrefabInstance:
       propertyPath: NoMoreFood
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8695592893101083521, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
+      propertyPath: destructionParticles
+      value: 
+      objectReference: {fileID: 9140742440436107005, guid: e9a22524fe8e3764b99d377f2335e7c8, type: 3}
     - target: {fileID: 9089450209227770684, guid: 3badba5e87ff943238b0b3705882e3e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.647
