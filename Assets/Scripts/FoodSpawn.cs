@@ -9,8 +9,9 @@ public class FoodSpawn : MonoBehaviour
     [SerializeField] private GameObject prefap;
     private GameObject player;
     [HideInInspector] public List<GameObject> foodList = new List<GameObject>();
-    
-    private float distanceFood = 4;
+
+    [Tooltip("default distance food")]
+    [SerializeField] private float distanceFood = 4;
 
     private PlayerMovement pm;
 
@@ -37,11 +38,11 @@ public class FoodSpawn : MonoBehaviour
         
         if (foodList.Count > 0)
         {
-            float currDist = 10;
+            float currDist;
             foreach (GameObject food in foodList)
             {
                 currDist = Vector3.Distance(randPos, food.transform.position);
-                if (currDist < distanceFood) { distanceFood = currDist; } //distance food will be closest food or 10 if no food close
+                if (currDist < distanceFood) { distanceFood = currDist; } //distance food will be closest food or default distancefood if no food close
             }
         }
         
@@ -49,7 +50,13 @@ public class FoodSpawn : MonoBehaviour
         {
             GameObject fishFood = Instantiate(prefap, new Vector3(randX, randY, 0), Quaternion.identity);
             foodList.Add(fishFood);
+            distanceFood = 100; //arbitrary high number will be overwritten in foreach loop
             return;
+        }
+        else
+        {
+            //Debug.Log($"distanceplayer {distancePlayer} distancefood {distanceFood}");
+            distanceFood = 100; //arbitrary high number will be overwritten in foreach loop
         }
         SpawnFoodRandom();
     }

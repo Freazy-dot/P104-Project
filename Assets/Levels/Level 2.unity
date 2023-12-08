@@ -16815,7 +16815,7 @@ MonoBehaviour:
   - {fileID: 6343627625906069768}
   objectsToEnable:
   - {fileID: 427047598}
-  delayBeforeDestroy: 4.5
+  delayBeforeDestroy: 4.4
 --- !u!114 &1170970531
 MonoBehaviour:
   m_ObjectHideFlags: 0

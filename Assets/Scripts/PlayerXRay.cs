@@ -49,7 +49,6 @@ public class PlayerXRay : MonoBehaviour
         mainCam = Camera.main;
         defaultFov = mainCam.fieldOfView;
         defaultScale = scaler.scaleFactor;
-
     }
 
     // Update is called once per frame

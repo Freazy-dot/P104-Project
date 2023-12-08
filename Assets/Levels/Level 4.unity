@@ -14808,7 +14808,7 @@ MonoBehaviour:
   - {fileID: 95219642}
   objectsToEnable:
   - {fileID: 574478558}
-  delayBeforeDestroy: 5
+  delayBeforeDestroy: 4.4
 --- !u!114 &1170970531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21135,6 +21135,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 68206347}
     - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+      propertyPath: countdownTimer
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: xRightBoundary
       value: 
       objectReference: {fileID: 1312713882}
@@ -21142,6 +21146,14 @@ PrefabInstance:
       propertyPath: objectToActivate
       value: 
       objectReference: {fileID: 900963583}
+    - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+      propertyPath: objectsToDisable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+      propertyPath: objectsToDisable.Array.data[0]
+      value: 
+      objectReference: {fileID: 574478558}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

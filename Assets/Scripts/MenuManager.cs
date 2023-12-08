@@ -5,11 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    [Tooltip("Only used on start menu to enable")]
     public GameObject objectToEnable; // Reference to the GameObject to enable
+
+
+    private void Start()
+    {
+        Debug.Log(GameObject.FindWithTag("Player"));
+        if (GameObject.FindWithTag("Player") != null)
+        {
+            Transform playerRoot = GameObject.FindWithTag("Player").transform.root;
+            Destroy(playerRoot.gameObject);
+        }
+    }
 
     public void EndGame()
     {
         Application.Quit();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void StartGame()

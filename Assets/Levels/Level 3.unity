@@ -13932,6 +13932,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75934c2ab6e13a74cab6d05a7e4473dc, type: 3}
+--- !u!1 &935603153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6343627625769813758, guid: 75934c2ab6e13a74cab6d05a7e4473dc, type: 3}
+  m_PrefabInstance: {fileID: 935603152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &940898216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24200,9 +24205,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 149312492}
     - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+      propertyPath: countdownTimer
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: xRightBoundary
       value: 
       objectReference: {fileID: 1439847278}
+    - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+      propertyPath: objectToActivate
+      value: 
+      objectReference: {fileID: 935603153}
+    - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+      propertyPath: objectsToDisable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
+      propertyPath: objectsToDisable.Array.data[0]
+      value: 
+      objectReference: {fileID: 427047598}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
