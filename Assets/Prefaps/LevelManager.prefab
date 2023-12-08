@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc12000b42d9a48c5aad9b9746c966de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endScene: 4
-  yBoundary: 0
-  xBoundary: 0
+  yUpBoundary: {fileID: 0}
+  yDownBoundary: {fileID: 0}
+  xLeftBoundary: {fileID: 0}
+  xRightBoundary: {fileID: 0}
   foodGoal: 4
   countdownTimer: 10
   objectToActivate: {fileID: 0}
@@ -67,3 +68,4 @@ MonoBehaviour:
   foodSpawnCount: 5
   prefap: {fileID: 6296841820036407421, guid: 62900ff2131d044299fe1c2fdf12df9a, type: 3}
   foodList: []
+  distanceFood: 4

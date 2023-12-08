@@ -24549,7 +24549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 291162053508784357, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: foodSpawnCount
-      value: 10
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3937307186206034333, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: m_Name
@@ -24601,7 +24601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: foodGoal
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7586857322493554573, guid: ab547a37b25144a3cbee6fc26bac49a3, type: 3}
       propertyPath: xBoundary
