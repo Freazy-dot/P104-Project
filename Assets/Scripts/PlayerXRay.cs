@@ -118,15 +118,11 @@ public class PlayerXRay : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Level 3")
             {
-            if (fe.foodCounter >= fe.foodGoal * 0.75)
-            {
-                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl3[3];
-            }
-            else if (fe.foodCounter >= fe.foodGoal * 0.5)
+            if (fe.foodCounter >= fe.foodGoal * 0.66)
             {
                 UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl3[2];
             }
-            else if (fe.foodCounter >= fe.foodGoal * 0.25)
+            else if (fe.foodCounter >= fe.foodGoal * 0.33)
             {
                 UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl3[1];
             }
@@ -137,15 +133,11 @@ public class PlayerXRay : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Level 4")
         {
-            if (fe.foodCounter >= fe.foodGoal * 0.75)
-            {
-                UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl4[3];
-            }
-            else if (fe.foodCounter >= fe.foodGoal * 0.5)
+            if (fe.foodCounter >= fe.foodGoal * 0.66)
             {
                 UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl4[2];
             }
-            else if (fe.foodCounter >= fe.foodGoal * 0.25)
+            else if (fe.foodCounter >= fe.foodGoal * 0.33)
             {
                 UIElement.GetComponent<UnityEngine.UI.Image>().sprite = spritesLvl4[1];
             }
