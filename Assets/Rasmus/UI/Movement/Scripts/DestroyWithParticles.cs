@@ -3,9 +3,7 @@ using UnityEngine;
 public class DestroyWithParticles : MonoBehaviour
 {
     [SerializeField] private ParticleSystem destructionParticles;
-    [SerializeField] private AudioClip destructionSound;
     private ParticleSystem instantiatedParticles;
-    private AudioSource audioSource;
 
     private void OnDisable()
     {
@@ -16,18 +14,6 @@ public class DestroyWithParticles : MonoBehaviour
 
             // Play the particle system once
             instantiatedParticles.Play();
-        }
-
-        if (destructionSound != null)
-        {
-            // Create an AudioSource component if not already present
-            if (audioSource == null)
-            {
-                audioSource = gameObject.AddComponent<AudioSource>();
-            }
-
-            // Play the destruction sound
-            audioSource.PlayOneShot(destructionSound);
         }
     }
 

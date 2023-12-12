@@ -16,7 +16,11 @@ public class FishEat : MonoBehaviour
 
     private LevelManager lvm;
     private FoodSpawn fs;
-    
+
+    [SerializeField] private ParticleSystem destructionParticles;
+    private ParticleSystem instantiatedParticles;
+    public float particleDestroyTime = 5f;
+
     void Start()
     {
         lvm = lvlManager.GetComponent<LevelManager>();
@@ -37,8 +41,13 @@ public class FishEat : MonoBehaviour
         
 
         GameObject food = col.gameObject;
+
+        
         if (food.CompareTag("FishFood"))
         {
+            instantiatedParticles = Instantiate(destructionParticles, food.transform.position, Quaternion.identity);
+            Destroy(food, particleDestroyTime);
+
             fs.removeFromList(food);
 
             foodCounter++;
